@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contoh Soal Operasi Matriks - Letstlearn</title>
+    <style>
+      :root {
+        --primary: #3e798b;
+        --primary-light: #575757;
+        --primary-dark: #575757;
+        --secondary: #2196f3;
+        --text: #333;
+        --text-light: #666;
+        --bg: #ffffff;
+        --bg-light: #f8f9fa;
+        --border: #e0e0e0;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --radius: 8px;
+        --success: #4caf50;
+        --error: #f44336;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", system-ui, sans-serif;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background: var(--bg);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .btn-home {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+      }
+
+      .btn-home:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 3rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 30vh;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary-dark);
+        font-weight: 700;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        color: var(--text-light);
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Container Soal */
+      .soal-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .soal-card {
+        background: var(--bg-light);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .soal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+      }
+
+      .soal-number {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary);
+        background: rgba(62, 121, 139, 0.1);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+      }
+
+      .soal-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        color: var(--text);
+      }
+
+      .soal-text p {
+        margin: 0 0 1rem 0;
+      }
+
+      /* Matrix Styling */
+      .matrix-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1.5rem 0;
+      }
+
+      .matrix-row {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 5px 0;
+      }
+
+      .matrix-element {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        font-weight: 600;
+      }
+
+      .matrix-bracket {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--primary);
+        margin: 0 10px;
+      }
+
+      .matrix-equation {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin: 2rem 0;
+        flex-wrap: wrap;
+      }
+
+      .operator {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary);
+      }
+
+      /* Styling untuk langkah-langkah */
+      .langkah-container {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 2px dashed var(--border);
+        display: none;
+      }
+
+      .langkah-container h3 {
+        color: var(--primary-dark);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .langkah-item {
+        background: var(--bg);
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-left: 5px solid var(--primary);
+        border-radius: 0 var(--radius) var(--radius) 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .langkah-item h4 {
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .langkah-item p {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      /* Container untuk kode matematika */
+      .code-container {
+        background: #f8f9fa;
+        border-radius: var(--radius);
+        padding: 1rem;
+        margin: 1rem 0;
+        border-left: 4px solid var(--secondary);
+        overflow-x: auto;
+      }
+
+      .code-container code {
+        display: block;
+        font-family: "Courier New", monospace;
+        font-size: 1rem;
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      /* Highlight untuk langkah penting */
+      .langkah-highlight {
+        background: rgba(62, 121, 139, 0.1);
+        padding: 0.5rem;
+        border-radius: var(--radius);
+        margin: 0.5rem 0;
+        border: 1px solid rgba(62, 121, 139, 0.2);
+      }
+
+      .langkah-note {
+        background: rgba(33, 150, 243, 0.1);
+        padding: 0.75rem;
+        border-radius: var(--radius);
+        margin: 1rem 0;
+        border-left: 4px solid var(--secondary);
+        font-style: italic;
+      }
+
+      /* Tombol untuk show/hide langkah */
+      .btn-langkah {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+        background: var(--secondary);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-langkah:hover {
+        background: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      /* Pilihan jawaban dengan matriks */
+      .pilihan-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .pilihan-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        background: var(--bg);
+        border: 2px solid var(--border);
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pilihan-item:hover {
+        border-color: var(--primary-light);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .pilihan-item.selected {
+        border-color: var(--primary);
+        background: rgba(62, 121, 139, 0.05);
+      }
+
+      .pilihan-item.correct {
+        border-color: var(--success);
+        background: rgba(76, 175, 80, 0.1);
+      }
+
+      .pilihan-item.incorrect {
+        border-color: var(--error);
+        background: rgba(244, 67, 54, 0.1);
+      }
+
+      .pilihan-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        background: var(--border);
+        color: var(--text);
+        border-radius: 50%;
+        margin-right: 1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .pilihan-item.selected .pilihan-label {
+        background: var(--primary);
+        color: white;
+      }
+
+      .pilihan-item.correct .pilihan-label {
+        background: var(--success);
+        color: white;
+      }
+
+      .pilihan-item.incorrect .pilihan-label {
+        background: var(--error);
+        color: white;
+      }
+
+      .pilihan-text {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .matrix-option {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .matrix-option .matrix-row {
+        gap: 8px;
+        margin: 0;
+      }
+
+      .matrix-option .matrix-element {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+      }
+
+      .matrix-option .matrix-bracket {
+        font-size: 1.5rem;
+      }
+
+      .feedback {
+        padding: 1rem;
+        border-radius: var(--radius);
+        margin-top: 1rem;
+        display: none;
+      }
+
+      .feedback.correct {
+        background: rgba(76, 175, 80, 0.1);
+        border-left: 4px solid var(--success);
+        color: var(--success);
+        display: block;
+      }
+
+      .feedback.incorrect {
+        background: rgba(244, 67, 54, 0.1);
+        border-left: 4px solid var(--error);
+        color: var(--error);
+        display: block;
+      }
+
+      .feedback p {
+        margin: 0;
+        font-weight: 500;
+      }
+
+      .soal-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1.5rem;
+      }
+
+      .btn-primary {
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+        background: transparent;
+        color: var(--primary);
+        border: 2px solid var(--primary);
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Footer */
+      .footer {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        color: white;
+        padding: 50px 0 20px;
+        margin-top: 2rem;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .footer-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-section h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--secondary);
+      }
+
+      .footer-section p {
+        line-height: 1.6;
+        margin-bottom: 15px;
+        opacity: 0.9;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--secondary);
+        transform: translateX(5px);
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .contact-item i {
+        color: var(--secondary);
+        margin-top: 3px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: var(--secondary);
+        transform: translateY(-5px);
+      }
+
+      .footer-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 40px;
+      }
+
+      .footer-bottom p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+      }
+
+      /* Responsif */
+      @media (max-width: 900px) {
+        .soal-container {
+          padding: 1rem;
+        }
+
+        .soal-card {
+          padding: 1.5rem;
+        }
+
+        .soal-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+        }
+
+        .soal-actions {
+          flex-direction: column;
+          gap: 1rem;
+          align-items: stretch;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+        }
+
+        header {
+          flex-direction: column;
+          gap: 1rem;
+          padding: 1rem;
+        }
+
+        .logo {
+          order: 1;
+        }
+
+        .nav-right {
+          order: 3;
+          margin-top: 1rem;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .matrix-equation {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .footer-container {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .footer-section h3::after {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .contact-item {
+          justify-content: center;
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+
+        .soal-text {
+          font-size: 1rem;
+        }
+
+        .pilihan-item {
+          padding: 0.75rem;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .pilihan-label {
+          margin-bottom: 0.5rem;
+          margin-right: 0;
+        }
+
+        .pilihan-text {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .matrix-element {
+          width: 30px;
+          height: 30px;
+          font-size: 0.8rem;
+        }
+
+        .btn-home {
+          padding: 0.4rem 1rem;
+          font-size: 0.8rem;
+        }
+
+        .btn-langkah {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">Letstlearn</div>
+      <div class="nav-right">
+        <a href="index.html" class="btn-home">
+          <i class="fas fa-home"></i>
+          Beranda
+        </a>
+      </div>
+    </header>
+
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Operasi Matriks: Perkalian Matriks</h1>
+        <p>Pelajari cara melakukan operasi perkalian matriks dengan aturan dan sifat-sifat yang berlaku.</p>
+      </div>
+    </div>
+
+    <div class="soal-container">
+      <div id="soal-1" class="soal-card">
+        <div class="soal-header">
+          <div class="soal-number">Soal 1</div>
+        </div>
+        <div class="soal-text">
+          <p>Diketahui dua matriks:</p>
+
+          <div class="matrix-equation">
+            <div class="matrix-container">
+              <div class="matrix-row">
+                <span class="matrix-bracket">[</span>
+                <span class="matrix-element">1</span>
+                <span class="matrix-element">2</span>
+                <span class="matrix-bracket">]</span>
+              </div>
+              <div class="matrix-row">
+                <span class="matrix-bracket">[</span>
+                <span class="matrix-element">3</span>
+                <span class="matrix-element">4</span>
+                <span class="matrix-bracket">]</span>
+              </div>
+            </div>
+
+            <span class="operator">×</span>
+
+            <div class="matrix-container">
+              <div class="matrix-row">
+                <span class="matrix-bracket">[</span>
+                <span class="matrix-element">5</span>
+                <span class="matrix-element">6</span>
+                <span class="matrix-bracket">]</span>
+              </div>
+              <div class="matrix-row">
+                <span class="matrix-bracket">[</span>
+                <span class="matrix-element">7</span>
+                <span class="matrix-element">8</span>
+                <span class="matrix-bracket">]</span>
+              </div>
+            </div>
+          </div>
+
+          <p>Tentukan hasil dari perkalian matriks A × B!</p>
+        </div>
+
+        <div class="pilihan-container">
+          <div class="pilihan-item" data-value="A">
+            <span class="pilihan-label">A</span>
+            <div class="pilihan-text">
+              <span>Matriks:</span>
+              <div class="matrix-option">
+                <div class="matrix-row">
+                  <span class="matrix-bracket">[</span>
+                  <span class="matrix-element">19</span>
+                  <span class="matrix-element">22</span>
+                  <span class="matrix-bracket">]</span>
+                </div>
+                <div class="matrix-row">
+                  <span class="matrix-bracket">[</span>
+                  <span class="matrix-element">43</span>
+                  <span class="matrix-element">50</span>
+                  <span class="matrix-bracket">]</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pilihan-item" data-value="B">
+            <span class="pilihan-label">B</span>
+            <div class="pilihan-text">
+              <span>Matriks:</span>
+              <div class="matrix-option">
+                <div class="matrix-row">
+                  <span class="matrix-bracket">[</span>
+                  <span class="matrix-element">19</span>
+                  <span class="matrix-element">22</span>
+                  <span class="matrix-bracket">]</span>
+                </div>
+                <div class="matrix-row">
+                  <span class="matrix-bracket">[</span>
+                  <span class="matrix-element">43</span>
+                  <span class="matrix-element">59</span>
+                  <span class="matrix-bracket">]</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pilihan-item" data-value="C">
+            <span class="pilihan-label">C</span>
+            <div class="pilihan-text">
+              <span>Matriks:</span>
+              <div class="matrix-option">
+                <div class="matrix-row">
+                  <span class="matrix-bracket">[</span>
+                  <span class="matrix-element">5</span>
+                  <span class="matrix-element">12</span>
+                  <span class="matrix-bracket">]</span>
+                </div>
+                <div class="matrix-row">
+                  <span class="matrix-bracket">[</span>
+                  <span class="matrix-element">21</span>
+                  <span class="matrix-element">32</span>
+                  <span class="matrix-bracket">]</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pilihan-item" data-value="D">
+            <span class="pilihan-label">D</span>
+            <div class="pilihan-text">
+              <span>Matriks:</span>
+              <div class="matrix-option">
+                <div class="matrix-row">
+                  <span class="matrix-bracket">[</span>
+                  <span class="matrix-element">23</span>
+                  <span class="matrix-element">34</span>
+                  <span class="matrix-bracket">]</span>
+                </div>
+                <div class="matrix-row">
+                  <span class="matrix-bracket">[</span>
+                  <span class="matrix-element">31</span>
+                  <span class="matrix-element">46</span>
+                  <span class="matrix-bracket">]</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feedback">
+          <p></p>
+        </div>
+
+        <div class="soal-actions">
+          <button class="btn-primary" onclick="checkAnswer(1)">Cek Jawaban</button>
+          <button class="btn-secondary" onclick="resetSoal(1)">Reset</button>
+        </div>
+
+        <!-- LANGKAH-LANGKAH SOAL 1 -->
+        <div class="langkah-container">
+          <h3><i class="fas fa-list-ol"></i> Langkah-Langkah Penyelesaian</h3>
+
+          <div class="langkah-item">
+            <h4><i class="fas fa-calculator"></i> Langkah 1: Identifikasi Matriks</h4>
+            <p>Diberikan dua matriks 2×2:</p>
+            <div class="code-container">
+              <code>Matriks A = [1 2]</code>
+              <code> [3 4]</code>
+              <code></code>
+              <code>Matriks B = [5 6]</code>
+              <code> [7 8]</code>
+            </div>
+            <div class="langkah-highlight">
+              <p><strong>Aturan Perkalian Matriks:</strong> Kolom matriks pertama harus sama dengan baris matriks kedua. Dalam kasus ini, kedua matriks berordo 2×2, sehingga dapat dikalikan.</p>
+            </div>
+          </div>
+
+          <div class="langkah-item">
+            <h4><i class="fas fa-times-circle"></i> Langkah 2: Rumus Perkalian Matriks</h4>
+            <p>Untuk matriks 2×2, hasil perkalian A × B adalah:</p>
+            <div class="code-container">
+              <code>[a b] × [e f] = [ae+bg af+bh]</code>
+              <code>[c d] [g h] [ce+dg cf+dh]</code>
+            </div>
+            <p>Dalam kasus kita:</p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem">
+              <li>a = 1, b = 2, c = 3, d = 4</li>
+              <li>e = 5, f = 6, g = 7, h = 8</li>
+            </ul>
+          </div>
+
+          <div class="langkah-item">
+            <h4><i class="fas fa-calculator"></i> Langkah 3: Hitung Elemen Pertama (baris 1, kolom 1)</h4>
+            <p>Elemen C₁₁ = (baris 1 A) • (kolom 1 B)</p>
+            <div class="code-container">
+              <code>C₁₁ = (1 × 5) + (2 × 7)</code>
+              <code> = 5 + 14</code>
+              <code> = 19</code>
+            </div>
+          </div>
+
+          <div class="langkah-item">
+            <h4><i class="fas fa-calculator"></i> Langkah 4: Hitung Elemen Kedua (baris 1, kolom 2)</h4>
+            <p>Elemen C₁₂ = (baris 1 A) • (kolom 2 B)</p>
+            <div class="code-container">
+              <code>C₁₂ = (1 × 6) + (2 × 8)</code>
+              <code> = 6 + 16</code>
+              <code> = 22</code>
+            </div>
+          </div>
+
+          <div class="langkah-item">
+            <h4><i class="fas fa-calculator"></i> Langkah 5: Hitung Elemen Ketiga (baris 2, kolom 1)</h4>
+            <p>Elemen C₂₁ = (baris 2 A) • (kolom 1 B)</p>
+            <div class="code-container">
+              <code>C₂₁ = (3 × 5) + (4 × 7)</code>
+              <code> = 15 + 28</code>
+              <code> = 43</code>
+            </div>
+          </div>
+
+          <div class="langkah-item">
+            <h4><i class="fas fa-calculator"></i> Langkah 6: Hitung Elemen Keempat (baris 2, kolom 2)</h4>
+            <p>Elemen C₂₂ = (baris 2 A) • (kolom 2 B)</p>
+            <div class="code-container">
+              <code>C₂₂ = (3 × 6) + (4 × 8)</code>
+              <code> = 18 + 32</code>
+              <code> = 50</code>
+            </div>
+          </div>
+
+          <div class="langkah-item">
+            <h4><i class="fas fa-check-circle"></i> Langkah 7: Gabungkan Hasil</h4>
+            <p>Hasil perkalian matriks A × B adalah:</p>
+            <div class="code-container">
+              <code>[19 22]</code>
+              <code>[43 50]</code>
+            </div>
+            <p>Atau dalam notasi matriks:</p>
+            <div class="langkah-highlight">
+              <p>Matriks hasil = [19 22]</p>
+              <p>[43 50]</p>
+            </div>
+          </div>
+
+          <div class="langkah-item">
+            <h4><i class="fas fa-search"></i> Langkah 8: Analisis Pilihan Jawaban</h4>
+            <p>Hasil kita: [19 22]</p>
+            <p>[43 50]</p>
+            <p>Bandingkan dengan pilihan:</p>
+            <ul style="margin-left: 1.5rem">
+              <li><strong>A:</strong> [19 22] ✓ (BENAR)</li>
+              <li>[43 50]</li>
+              <li><strong>B:</strong> [19 22] ✗ (salah, elemen C₂₂ harusnya 50)</li>
+              <li>[43 59]</li>
+              <li><strong>C:</strong> [5 12] ✗ (salah, ini hasil perkalian elemen per elemen, bukan perkalian matriks)</li>
+              <li>[21 32]</li>
+              <li><strong>D:</strong> [23 34] ✗ (salah)</li>
+              <li>[31 46]</li>
+            </ul>
+            <div class="langkah-note"><i class="fas fa-lightbulb"></i> <strong>Tips:</strong> Perkalian matriks berbeda dengan perkalian biasa! Perhatikan rumus perkalian baris-kolom dan jangan dikalikan elemen per elemen.</div>
+            <p><strong>Jawaban akhir:</strong> Pilihan <strong>A</strong> adalah yang benar</p>
+          </div>
+
+          <button class="btn-langkah" onclick="toggleLangkah(1)"><i class="fas fa-eye"></i> Sembunyikan Langkah-Langkah</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div id="footer" class="footer-container">
+        <div class="footer-section">
+          <h3>Tentang LetsLearn</h3>
+          <p>Kami adalah platform pembelajaran matematika yang berdedikasi untuk membantu semua orang belajar matematika dengan cara yang menyenangkan dan interaktif.</p>
+          <div class="social-links">
+            <a href="https://wa.me/+628732453696"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.tiktok.com/@dee4uu_?_r=1&_t=ZS-928VGZJMsRE"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/ray_na.dea?igsh=cm9wazZpc3BuZWd6"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Materi Pembelajaran</h3>
+          <ul class="footer-links">
+            <li><a href="soal_matriks1.html">Operasi Matriks</a></li>
+            <li><a href="soal_matriks2.html">Determinan Matriks</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Kontak Kami</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <p>Jl. Ikan Piranha Atas, Tunjungsekar, Kec. Lowokwaru, Kota Malang, Jawa Timur 65142 SMKN 5 MALANG, Indonesia</p>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <p>+62 812-3456-7890</p>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <p>raynadeakirana@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 LetsLearn. Semua Hak Dilindungi. | Platform Pembelajaran Matematika Interaktif</p>
+      </div>
+    </footer>
+
+    <script>
+      // Daftar jawaban benar
+      const correctAnswers = {
+        1: "A",
+      };
+
+      // Fungsi untuk toggle show/hide langkah-langkah
+      function toggleLangkah(soalId) {
+        const soalCard = document.getElementById(`soal-${soalId}`);
+        const langkahContainer = soalCard.querySelector(".langkah-container");
+        const btnLangkah = soalCard.querySelector(".btn-langkah");
+        const icon = btnLangkah.querySelector("i");
+
+        if (langkahContainer.style.display === "none" || langkahContainer.style.display === "") {
+          langkahContainer.style.display = "block";
+          icon.className = "fas fa-eye-slash";
+          btnLangkah.innerHTML = '<i class="fas fa-eye-slash"></i> Sembunyikan Langkah-Langkah';
+        } else {
+          langkahContainer.style.display = "none";
+          icon.className = "fas fa-eye";
+          btnLangkah.innerHTML = '<i class="fas fa-eye"></i> Tampilkan Langkah-Langkah';
+        }
+      }
+
+      // Fungsi untuk memeriksa jawaban
+      function checkAnswer(soalId) {
+        const soalCard = document.getElementById(`soal-${soalId}`);
+        const selectedOption = soalCard.querySelector(".pilihan-item.selected");
+        const feedback = soalCard.querySelector(".feedback");
+        const correctAnswer = correctAnswers[soalId];
+        const langkahContainer = soalCard.querySelector(".langkah-container");
+
+        if (!selectedOption) {
+          alert("Silakan pilih jawaban terlebih dahulu!");
+          return;
+        }
+
+        const userAnswer = selectedOption.getAttribute("data-value");
+
+        // Reset semua kelas hasil
+        soalCard.querySelectorAll(".pilihan-item").forEach((pilihan) => {
+          pilihan.classList.remove("correct", "incorrect");
+        });
+
+        if (userAnswer === correctAnswer) {
+          selectedOption.classList.add("correct");
+          feedback.classList.add("correct");
+          feedback.classList.remove("incorrect");
+          feedback.querySelector("p").textContent = "✅ Jawaban Anda benar! Silakan lihat langkah-langkah di bawah untuk detailnya.";
+          feedback.style.display = "block";
+
+          // Tampilkan langkah-langkah
+          if (langkahContainer.style.display === "none") {
+            toggleLangkah(soalId);
+          }
+        } else {
+          selectedOption.classList.add("incorrect");
+          feedback.classList.add("incorrect");
+          feedback.classList.remove("correct");
+          feedback.querySelector("p").textContent = `❌ Jawaban Anda salah. Jawaban yang benar adalah ${correctAnswer}. Silakan pelajari langkah-langkah di bawah.`;
+          feedback.style.display = "block";
+
+          // Tampilkan langkah-langkah
+          if (langkahContainer.style.display === "none") {
+            toggleLangkah(soalId);
+          }
+
+          // Tandai jawaban yang benar
+          soalCard.querySelector(`.pilihan-item[data-value="${correctAnswer}"]`).classList.add("correct");
+        }
+      }
+
+      // Fungsi untuk mereset soal
+      function resetSoal(soalId) {
+        const soalCard = document.getElementById(`soal-${soalId}`);
+
+        // Reset pilihan
+        soalCard.querySelectorAll(".pilihan-item").forEach((pilihan) => {
+          pilihan.classList.remove("selected", "correct", "incorrect");
+        });
+
+        // Sembunyikan feedback
+        const feedback = soalCard.querySelector(".feedback");
+        feedback.classList.remove("correct", "incorrect");
+        feedback.style.display = "none";
+
+        // Sembunyikan langkah-langkah
+        const langkahContainer = soalCard.querySelector(".langkah-container");
+        langkahContainer.style.display = "none";
+
+        // Reset tombol langkah
+        const btnLangkah = soalCard.querySelector(".btn-langkah");
+        if (btnLangkah) {
+          btnLangkah.innerHTML = '<i class="fas fa-eye"></i> Tampilkan Langkah-Langkah';
+        }
+      }
+
+      // Inisialisasi saat halaman dimuat
+      document.addEventListener("DOMContentLoaded", function () {
+        // Tambahkan event listener untuk pilihan jawaban
+        document.querySelectorAll(".pilihan-item").forEach((item) => {
+          item.addEventListener("click", function () {
+            const soalCard = this.closest(".soal-card");
+
+            // Reset semua kelas yang menunjukkan hasil atau pilihan di soal ini
+            soalCard.querySelectorAll(".pilihan-item").forEach((pilihan) => {
+              pilihan.classList.remove("selected", "correct", "incorrect");
+            });
+
+            // Tandai pilihan yang dipilih
+            this.classList.add("selected");
+
+            // Sembunyikan feedback
+            soalCard.querySelector(".feedback").style.display = "none";
+          });
+        });
+
+        // Inisialisasi reset untuk soal
+        resetSoal(1);
+      });
+    </script>
+  </body>
+</html>

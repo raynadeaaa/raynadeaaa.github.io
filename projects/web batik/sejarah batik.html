@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Batik Indonesia - Filosofi dan Makna</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #ffb4a2;
+        color: #3a2c1a;
+        line-height: 1.6;
+        scroll-behavior: smooth;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        background: #cdb4db;
+        color: #ffffff;
+        padding: 2rem 0;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+      }
+
+      .tagline {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+        color: #8e6aa5;
+        margin: 2rem 0 1rem;
+        border-bottom: 2px solid #e5cfea;
+        padding-bottom: 0.5rem;
+      }
+
+      h3 {
+        color: #5c3c92;
+        margin-bottom: 0.8rem;
+      }
+
+      nav {
+        background: rgba(184, 184, 255, 0.95);
+        padding: 1rem 0;
+        backdrop-filter: blur(10px);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .nav-item a {
+        color: #5c3c92;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.7);
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-item a i {
+        margin-right: 8px;
+      }
+
+      .nav-item a:hover {
+        background: rgba(255, 255, 255, 0.9);
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .content-section {
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .welcome-section {
+        text-align: center;
+        background-color: #e8dfca;
+        padding: 3rem 1rem;
+        margin-bottom: 2rem;
+        border-radius: 12px;
+      }
+
+      .welcome-section p {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+      }
+
+      .history-section {
+        background-color: #f0e6d3;
+        padding: 2rem;
+        border-radius: 8px;
+        margin: 2rem 0;
+        border-left: 5px solid #cdb4db;
+      }
+
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 2rem auto;
+      }
+
+      .timeline::after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        background-color: #cdb4db;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -3px;
+      }
+
+      .timeline-item {
+        padding: 10px 40px;
+        position: relative;
+        width: 50%;
+        box-sizing: border-box;
+      }
+
+      .timeline-item:nth-child(odd) {
+        left: 0;
+      }
+
+      .timeline-item:nth-child(even) {
+        left: 50%;
+      }
+
+      .timeline-content {
+        padding: 20px;
+        background-color: white;
+        border-radius: 6px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #8e6aa5;
+        border: 4px solid #cdb4db;
+        border-radius: 50%;
+        top: 15px;
+        z-index: 1;
+      }
+
+      .timeline-item:nth-child(odd)::after {
+        right: -10px;
+      }
+
+      .timeline-item:nth-child(even)::after {
+        left: -10px;
+      }
+
+      .philosophy-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 20px;
+        margin-top: 2rem;
+      }
+
+      .philosophy-card {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .philosophy-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card-header {
+        padding: 1.5rem;
+        background-color: #8e6aa5;
+        color: white;
+        text-align: center;
+      }
+
+      .card-header h3 {
+        color: white;
+        margin: 0;
+      }
+
+      .card-body {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .motif-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+      }
+
+      .symbolism {
+        background-color: #f0e6d3;
+        padding: 1rem;
+        border-radius: 5px;
+        margin-top: 1rem;
+        flex-grow: 1;
+      }
+
+      .symbolism h4 {
+        color: #5c3c92;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .symbolism h4 i {
+        margin-right: 8px;
+        color: #8e6aa5;
+      }
+
+      .quote-section {
+        background: linear-gradient(135deg, #8e6aa5 0%, #cdb4db 100%);
+        color: white;
+        padding: 3rem 2rem;
+        border-radius: 10px;
+        margin: 3rem 0;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .quote-section p {
+        font-size: 1.3rem;
+        max-width: 800px;
+        margin: 0 auto;
+        font-style: italic;
+        line-height: 1.8;
+      }
+
+      .quote-author {
+        margin-top: 1rem;
+        font-weight: bold;
+      }
+
+      .meaning-section {
+        background-color: #f0e6d3;
+        padding: 2rem;
+        border-radius: 8px;
+        margin: 2rem 0;
+        border-left: 5px solid #cdb4db;
+      }
+
+      .meaning-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 1.5rem;
+      }
+
+      .meaning-item {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      }
+
+      .meaning-item h4 {
+        color: #5c3c92;
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .meaning-item h4 i {
+        margin-right: 10px;
+        color: #8e6aa5;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 2rem;
+      }
+
+      .gallery-item {
+        height: 250px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: flex-end;
+      }
+
+      .gallery-item:hover {
+        transform: scale(1.05);
+      }
+
+      .gallery-caption {
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        width: 100%;
+        padding: 10px;
+        font-weight: bold;
+      }
+
+      footer {
+        background-color: #cdb4db;
+        color: #ffffff;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 3rem;
+        border-top: 4px solid #b197bd;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-logo {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 20px;
+        margin: 1.5rem 0;
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: #f0e6d3;
+      }
+
+      @media screen and (max-width: 768px) {
+        .timeline::after {
+          left: 31px;
+        }
+
+        .timeline-item {
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
+        }
+
+        .timeline-item:nth-child(even) {
+          left: 0;
+        }
+
+        .timeline-item:nth-child(odd)::after,
+        .timeline-item:nth-child(even)::after {
+          left: 21px;
+        }
+
+        .nav-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .philosophy-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .section-title h2 {
+        display: inline-block;
+        border-bottom: 3px solid #cdb4db;
+        padding-bottom: 0.5rem;
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #8e6aa5;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s;
+        z-index: 99;
+      }
+
+      .back-to-top:hover {
+        background-color: #cdb4db;
+        transform: translateY(-5px);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Batik Indonesia</h1>
+        <p class="tagline">Warisan Budaya Dunia yang Sarat Makna Filosofis</p>
+      </div>
+    </header>
+
+    <nav>
+      <div class="container nav-container">
+        <div class="nav-item">
+          <a href="#home"><i class="fas fa-home"></i> Beranda</a>
+        </div>
+        <div class="nav-item">
+          <a href="#sejarah"><i class="fas fa-history"></i> Sejarah</a>
+        </div>
+        <div class="nav-item">
+          <a href="#filosofi"><i class="fas fa-brain"></i> Filosofi</a>
+        </div>
+        <div class="nav-item">
+          <a href="#makna"><i class="fas fa-palette"></i> Makna Universal</a>
+        </div>
+        <div class="nav-item">
+          <a href="#galeri"><i class="fas fa-images"></i> Galeri</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <section id="home" class="content-section">
+        <div class="welcome-section">
+          <h2>Makna Filosofis Batik Indonesia</h2>
+          <p>
+            Batik bukan sekadar kain bermotif indah, tetapi merupakan mahakarya budaya yang mengandung nilai-nilai filosofis mendalam. Setiap goresan canting dan pola yang terbentuk menyimpan pesan kehidupan, harapan, serta pandangan dunia
+            masyarakat Indonesia. Melalui batik, kita dapat memahami cara berpikir, nilai-nilai luhur, dan kearifan lokal yang telah diwariskan turun-temurun.
+          </p>
+        </div>
+      </section>
+
+      <section id="sejarah" class="content-section">
+        <div class="section-title">
+          <h2>Sejarah Batik Indonesia</h2>
+        </div>
+
+        <div class="history-section">
+          <p>
+            Batik telah menjadi bagian dari budaya Indonesia selama berabad-abad. Teknik pembuatan batik telah dikenal sejak zaman Majapahit dan menjadi populer pada akhir abad ke-18. Awalnya, batik hanya dikenakan oleh kalangan bangsawan
+            keraton, namun seiring waktu, batik menyebar ke seluruh lapisan masyarakat.
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <h3>Abad ke-12</h3>
+                <p>Batik mulai dikenal di Indonesia, dengan bukti tertua ditemukan di Toraja, Sulawesi.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <h3>Abad ke-17</h3>
+                <p>Batik berkembang pesat di kerajaan Mataram, kemudian menyebar ke Surakarta dan Yogyakarta.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <h3>Abad ke-19</h3>
+                <p>Batik mulai diproduksi secara massal dan menjadi komoditas perdagangan yang penting.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <h3>2 Oktober 2009</h3>
+                <p>UNESCO menetapkan batik Indonesia sebagai Warisan Kemanusiaan untuk Budaya Lisan dan Nonbendawi.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="filosofi" class="content-section">
+        <div class="section-title">
+          <h2>Filosofi dalam Motif Batik</h2>
+        </div>
+
+        <div class="philosophy-grid">
+          <div class="philosophy-card">
+            <div class="card-header">
+              <h3>Kawung</h3>
+            </div>
+            <div class="card-body">
+              <div class="motif-image" style="background: linear-gradient(45deg, #cdb4db, #e5cfea)">
+                <span>Motif Kawung</span>
+              </div>
+              <p>Motif Kawung terdiri dari bulatan-bulatan seperti buah kawung (sejenis kelapa) yang tersusun rapi. Motif ini melambangkan kesempurnaan, kemurnian, dan kesucian hati.</p>
+              <div class="symbolism">
+                <h4><i class="fas fa-seedling"></i> Simbolisme</h4>
+                <p>Buah kawung yang menjadi inspirasi motif ini melambangkan harapan untuk menjadi manusia yang utuh, berbudi luhur, dan bermanfaat bagi sesama.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="philosophy-card">
+            <div class="card-header">
+              <h3>Parang</h3>
+            </div>
+            <div class="card-body">
+              <div class="motif-image" style="background: linear-gradient(45deg, #8e6aa5, #b197bd)">
+                <span>Motif Parang</span>
+              </div>
+              <p>Motif Parang dengan bentuk seperti ombak laut atau bilah pedang melambangkan kekuatan, keteguhan, dan kepemimpinan.</p>
+              <div class="symbolism">
+                <h4><i class="fas fa-water"></i> Simbolisme</h4>
+                <p>Ombak laut yang tak pernah berhenti menggambarkan semangat pantang menyerah dalam menghadapi tantangan kehidupan.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="philosophy-card">
+            <div class="card-header">
+              <h3>Mega Mendung</h3>
+            </div>
+            <div class="card-body">
+              <div class="motif-image" style="background: linear-gradient(45deg, #b197bd, #d4c1e6)">
+                <span>Motif Mega Mendung</span>
+              </div>
+              <p>Motif Mega Mendung dari Cirebon yang menyerupai awan menggambarkan kesabaran, ketabahan, dan kesejukan hati.</p>
+              <div class="symbolism">
+                <h4><i class="fas fa-cloud"></i> Simbolisme</h4>
+                <p>Awan yang meneduhkan mengajarkan untuk selalu bersikap tenang dan sabar dalam menghadapi segala masalah kehidupan.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="philosophy-card">
+            <div class="card-header">
+              <h3>Truntum</h3>
+            </div>
+            <div class="card-body">
+              <div class="motif-image" style="background: linear-gradient(45deg, #8e6aa5, #cdb4db)">
+                <span>Motif Truntum</span>
+              </div>
+              <p>Motif Truntum yang berarti "tumbuh kembali" melambangkan cinta yang tumbuh dan berkembang abadi.</p>
+              <div class="symbolism">
+                <h4><i class="fas fa-heart"></i> Simbolisme</h4>
+                <p>Motif ini sering digunakan dalam pernikahan sebagai harapan agar cinta pasangan semakin berkembang dan abadi sepanjang masa.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="philosophy-card">
+            <div class="card-header">
+              <h3>Sido Mukti</h3>
+            </div>
+            <div class="card-body">
+              <div class="motif-image" style="background: linear-gradient(45deg, #b197bd, #e5cfea)">
+                <span>Motif Sido Mukti</span>
+              </div>
+              <p>Motif Sido Mukti melambangkan harapan untuk mencapai kebahagiaan dan kesejahteraan lahir batin.</p>
+              <div class="symbolism">
+                <h4><i class="fas fa-pray"></i> Simbolisme</h4>
+                <p>Batik dengan motif ini sering digunakan dalam upacara pernikahan dan khitanan sebagai doa untuk kebahagiaan hidup.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="philosophy-card">
+            <div class="card-header">
+              <h3>Lereng</h3>
+            </div>
+            <div class="card-body">
+              <div class="motif-image" style="background: linear-gradient(45deg, #8e6aa5, #b197bd)">
+                <span>Motif Lereng</span>
+              </div>
+              <p>Motif Lereng dengan garis-garis diagonal melambangkan harmoni dan keseimbangan dalam kehidupan.</p>
+              <div class="symbolism">
+                <h4><i class="fas fa-balance-scale"></i> Simbolisme</h4>
+                <p>Motif ini mengingatkan pentingnya menjaga keseimbangan antara dunia material dan spiritual, antara individu dan masyarakat.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="quote-section">
+        <p>"Batik adalah cerminan jiwa bangsa Indonesia. Setiap motifnya bukan hanya indah dipandang, tetapi juga sarat dengan makna filosofis yang dalam, mengajarkan kita tentang kehidupan, harmoni, dan kearifan lokal."</p>
+        <p class="quote-author">- Budayawan Indonesia</p>
+      </div>
+
+      <section id="makna" class="content-section">
+        <div class="meaning-section">
+          <h2>Makna Universal dalam Batik</h2>
+          <p>Terlepas dari keragaman motifnya, batik Indonesia memiliki beberapa makna universal yang mencerminkan nilai-nilai luhur bangsa:</p>
+
+          <div class="meaning-grid">
+            <div class="meaning-item">
+              <h4><i class="fas fa-hands-helping"></i> Gotong Royong</h4>
+              <p>Proses pembuatan batik yang melibatkan banyak tahapan mencerminkan semangat gotong royong dan kebersamaan.</p>
+            </div>
+
+            <div class="meaning-item">
+              <h4><i class="fas fa-infinity"></i> Keabadian</h4>
+              <p>Batik yang tahan lama melambangkan harapan akan keabadian nilai-nilai luhur yang diwariskan.</p>
+            </div>
+
+            <div class="meaning-item">
+              <h4><i class="fas fa-praying-hands"></i> Spiritualitas</h4>
+              <p>Banyak motif batik mengandung unsur spiritual dan doa untuk pemakainya.</p>
+            </div>
+
+            <div class="meaning-item">
+              <h4><i class="fas fa-universal-access"></i> Harmoni</h4>
+              <p>Keseimbangan dalam komposisi motif mencerminkan harmoni antara manusia, alam, dan Tuhan.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="galeri" class="content-section">
+        <div class="section-title">
+          <h2>Galeri Batik Indonesia</h2>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item" style="background: linear-gradient(45deg, #cdb4db, #e5cfea)">
+            <div class="gallery-caption">Batik Kawung</div>
+          </div>
+          <div class="gallery-item" style="background: linear-gradient(45deg, #8e6aa5, #b197bd)">
+            <div class="gallery-caption">Batik Parang</div>
+          </div>
+          <div class="gallery-item" style="background: linear-gradient(45deg, #b197bd, #d4c1e6)">
+            <div class="gallery-caption">Batik Mega Mendung</div>
+          </div>
+          <div class="gallery-item" style="background: linear-gradient(45deg, #8e6aa5, #cdb4db)">
+            <div class="gallery-caption">Batik Truntum</div>
+          </div>
+          <div class="gallery-item" style="background: linear-gradient(45deg, #b197bd, #e5cfea)">
+            <div class="gallery-caption">Batik Sido Mukti</div>
+          </div>
+          <div class="gallery-item" style="background: linear-gradient(45deg, #8e6aa5, #b197bd)">
+            <div class="gallery-caption">Batik Lereng</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <a href="#" class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer>
+      <div class="container footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-palette"></i>
+        </div>
+        <p>Batik Indonesia - Warisan Budaya Dunia yang Tak Ternilai</p>
+        <div class="footer-links">
+          <a href="#home">Beranda</a>
+          <a href="#sejarah">Sejarah</a>
+          <a href="#filosofi">Filosofi</a>
+          <a href="#makna">Makna Universal</a>
+          <a href="#galeri">Galeri</a>
+        </div>
+        <p>&copy; 2023 Batik Indonesia. Semua hak dilindungi.</p>
+      </div>
+    </footer>
+  </body>
+</html>

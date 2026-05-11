@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Batik Tradisional - Warisan Budaya Indonesia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      :root {
+        --primary: #8b4513;
+        --secondary: #a0522d;
+        --light: #f5f5dc;
+        --white: #ffffff;
+        --dark: #3a2c1a;
+        --transition: all 0.3s ease;
+      }
+
+      body {
+        background-color: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .navigation {
+        background: rgba(139, 69, 19, 0.95);
+        padding: 1rem 0;
+        backdrop-filter: blur(10px);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-menu {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .nav-item {
+        color: var(--white);
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        transition: var(--transition);
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        border: none;
+      }
+
+      .nav-item:hover,
+      .nav-item.active {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .nav-item.kembali {
+        background: rgba(160, 82, 45, 0.9);
+        font-weight: bold;
+      }
+
+      .nav-item.kembali:hover {
+        background: rgba(160, 82, 45, 1);
+      }
+
+      header {
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://blogunik.com/wp-content/uploads/2018/06/Berbagai-Macam-Motif-Batik-dan-Asalnya-11-1024x665.jpg") no-repeat center center/cover;
+        background-size: cover;
+        color: var(--white);
+        padding: 3rem 0;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        height: 60vh;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+        margin: 0;
+      }
+
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+      }
+
+      h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        font-weight: 700;
+      }
+
+      .subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        font-weight: 300;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+        color: var(--primary);
+        margin: 2rem 0 1rem;
+        border-bottom: 2px solid #d2691e;
+        padding-bottom: 0.5rem;
+      }
+
+      h3 {
+        color: #654321;
+        margin-bottom: 0.8rem;
+      }
+
+      .section {
+        display: none;
+        animation: fadeIn 0.5s ease-in;
+      }
+
+      .section.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .content-section {
+        background-color: var(--white);
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .highlight-box {
+        background-color: var(--light);
+        padding: 1.5rem;
+        border-left: 4px solid var(--primary);
+        margin: 1.5rem 0;
+        border-radius: 0 8px 8px 0;
+      }
+
+      .batik-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .filosofi-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .batik-card {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: 1px solid #e0e0e0;
+      }
+
+      .batik-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .batik-card h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 0.5rem;
+      }
+
+      .batik-card p {
+        margin-bottom: 0.8rem;
+      }
+
+      .batik-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        border: 1px solid #d2691e;
+      }
+
+      .model-image {
+        width: 100%;
+        height: 400px;
+        object-fit: contain;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        border: 1px solid #d2691e;
+        background-color: #f8f9fa;
+      }
+
+      .image-caption {
+        font-size: 0.85rem;
+        color: #666;
+        text-align: center;
+        margin-top: 0.5rem;
+        font-style: italic;
+      }
+
+      .category-tabs {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .tab-btn {
+        padding: 0.8rem 1.8rem;
+        background: var(--light);
+        border: 1px solid #d2691e;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 500;
+        color: var(--dark);
+        font-size: 1rem;
+      }
+
+      .tab-btn.active {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      .color-palette {
+        display: flex;
+        gap: 5px;
+        margin-top: 10px;
+      }
+
+      .color-swatch {
+        width: 30px;
+        height: 30px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+      }
+
+      footer {
+        background: var(--primary);
+        color: var(--white);
+        padding: 3rem 0 1rem;
+        margin-top: 3rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-col h3 {
+        color: var(--white);
+        margin-bottom: 1.5rem;
+        font-size: 1.3rem;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 0.5rem;
+      }
+
+      .footer-col p {
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        transition: var(--transition);
+        color: var(--white);
+        text-decoration: none;
+      }
+
+      .social-link:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-links a {
+        color: var(--white);
+        text-decoration: none;
+        transition: var(--transition);
+        opacity: 0.9;
+      }
+
+      .footer-links a:hover {
+        color: var(--light);
+        padding-left: 5px;
+        opacity: 1;
+      }
+
+      .footer-contact {
+        list-style: none;
+      }
+
+      .footer-contact li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        opacity: 0.9;
+      }
+
+      .footer-contact i {
+        margin-right: 10px;
+        margin-top: 3px;
+        min-width: 16px;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        opacity: 0.8;
+      }
+
+      @media (max-width: 768px) {
+        .nav-menu {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        header {
+          height: 50vh;
+          min-height: 400px;
+          padding: 2rem 0;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        .subtitle {
+          font-size: 1.2rem;
+        }
+
+        .batik-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .filosofi-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .content-section {
+          padding: 1.5rem;
+        }
+
+        .model-image {
+          height: 300px;
+        }
+
+        .category-tabs {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .tab-btn {
+          width: 100%;
+          max-width: 250px;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        header {
+          height: 40vh;
+          min-height: 300px;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .subtitle {
+          font-size: 1rem;
+        }
+
+        .model-image {
+          height: 250px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navigation">
+      <div class="container">
+        <div class="nav-menu">
+          <button class="nav-item active" onclick="showSection('beranda')">Beranda</button>
+          <button class="nav-item" onclick="showSection('konsep')">Konsep</button>
+          <button class="nav-item" onclick="showSection('inovasi')">Inovasi</button>
+          <button class="nav-item" onclick="showSection('produk')">Produk</button>
+          <button class="nav-item" onclick="showSection('galeri')">Galeri</button>
+          <button class="nav-item" onclick="showSection('tentang')">Tentang</button>
+          <button class="nav-item kembali" onclick="goToIndex3()">Kembali</button>
+        </div>
+      </div>
+    </nav>
+
+    <header>
+      <div class="header-container">
+        <h1>Batik Modern</h1>
+        <p class="subtitle">Inovasi Warisan Budaya Indonesia dalam Gaya Kontemporer</p>
+      </div>
+    </header>
+
+    <main class="container" style="margin: 3rem auto; flex: 1">
+      <div id="beranda" class="section active">
+        <div class="content-section">
+          <h2>Selamat Datang di Dunia Batik Modern</h2>
+          <p style="font-size: 1.1rem; margin-bottom: 2rem">Batik Modern adalah evolusi kreatif dari warisan budaya Indonesia yang memadukan motif tradisional dengan estetika kontemporer untuk kehidupan masa kini.</p>
+
+          <div class="batik-grid">
+            <div class="batik-card">
+              <h3>🎨 Inovasi Desain</h3>
+              <p>Batik Modern menghadirkan reinterpretasi motif tradisional dengan palet warna yang segar dan pola yang lebih minimalis, cocok untuk gaya hidup urban.</p>
+            </div>
+            <div class="batik-card">
+              <h3>🌍 Tren Global</h3>
+              <p>Dengan sentuhan modern, batik semakin diterima di pasar fashion internasional dan menjadi pilihan gaya hidup yang sophisticated.</p>
+            </div>
+            <div class="batik-card">
+              <h3>💼 Multifungsi</h3>
+              <p>Batik Modern hadir dalam berbagai produk fashion dan lifestyle yang cocok untuk berbagai kesempatan, dari formal hingga casual.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="konsep" class="section">
+        <div class="content-section">
+          <h2>Konsep Batik Modern</h2>
+          <p style="font-size: 1.1rem; margin-bottom: 1.5rem">Batik Modern adalah perpaduan harmonis antara nilai-nilai tradisional dengan ekspresi kreatif kontemporer, menciptakan bahasa visual baru yang relevan dengan zaman.</p>
+
+          <div class="highlight-box">
+            <h3 style="color: var(--primary); margin-bottom: 1rem">Prinsip Desain Batik Modern</h3>
+            <p>
+              Batik Modern mempertahankan teknik membatik tradisional sambil mengembangkan motif, warna, dan aplikasi yang lebih sesuai dengan gaya hidup modern. Desainnya sering kali lebih minimalis, abstrak, dan menggunakan palet warna
+              yang lebih berani.
+            </p>
+          </div>
+
+          <div class="batik-grid">
+            <div class="batik-card">
+              <h3>Warna Kontemporer</h3>
+              <p>Palet warna batik modern lebih beragam, mencakup variasi coklat modern, pastel earth tone, dan gradasi yang tidak umum ditemukan pada batik tradisional.</p>
+              <div class="color-palette">
+                <div class="color-swatch" style="background-color: #8d6e63"></div>
+                <div class="color-swatch" style="background-color: #a1887f"></div>
+                <div class="color-swatch" style="background-color: #d7ccc8"></div>
+                <div class="color-swatch" style="background-color: #bcaaa4"></div>
+                <div class="color-swatch" style="background-color: #5d4037"></div>
+              </div>
+            </div>
+            <div class="batik-card">
+              <h3>Motif Abstrak</h3>
+              <p>Motif batik modern sering kali mengambil elemen tradisional dan menyederhanakannya menjadi bentuk-bentuk geometris atau abstrak yang lebih minimalis dan universal.</p>
+            </div>
+            <div class="batik-card">
+              <h3>Aplikasi Inovatif</h3>
+              <p>Batik modern tidak hanya diaplikasikan pada kain, tetapi juga pada berbagai produk fashion dan lifestyle seperti sneakers, tas, dan aksesori modern.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="inovasi" class="section">
+        <div class="content-section">
+          <h2>Inovasi dalam Batik Modern</h2>
+          <p style="font-size: 1.1rem; margin-bottom: 1.5rem">Batik Modern terus berevolusi dengan menerapkan teknologi dan pendekatan baru dalam proses produksi dan desain.</p>
+
+          <div class="batik-grid">
+            <div class="batik-card">
+              <img src="img/batik digital.jpeg" alt="Batik Digital" class="batik-image" />
+              <h3>Batik Digital</h3>
+              <p>Penggunaan teknologi printing digital memungkinkan produksi batik dengan detail yang lebih rumit dan variasi warna yang tak terbatas.</p>
+              <p class="image-caption">Motif batik dicetak dengan teknologi digital printing modern</p>
+            </div>
+            <div class="batik-card">
+              <img src="img/sustainable.jpeg" alt="Batik Ramah Lingkungan" class="batik-image" />
+              <h3>Batik Sustainable</h3>
+              <p>Penggunaan pewarna alami dan teknik produksi ramah lingkungan menjadi tren dalam batik modern yang sadar akan keberlanjutan.</p>
+              <p class="image-caption">Batik dengan pewarna alami dari tumbuhan dan proses eco-friendly</p>
+            </div>
+            <div class="batik-card">
+              <img src="img/tekstur.jpeg" alt="Batik 3D" class="batik-image" />
+              <h3>Batik Tekstur</h3>
+              <p>Eksperimen dengan tekstur dan lapisan menciptakan efek tiga dimensi yang menambah kedalaman visual pada karya batik modern.</p>
+              <p class="image-caption">Batik dengan efek tekstur dan dimensi yang inovatif</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="produk" class="section">
+        <div class="content-section">
+          <h2>Produk Batik Modern</h2>
+          <p style="font-size: 1.1rem; margin-bottom: 1.5rem">Batik Modern hadir dalam beragam produk yang sesuai dengan gaya hidup kontemporer dan kebutuhan fashion masa kini.</p>
+
+          <div class="batik-grid">
+            <div class="batik-card">
+              <img src="img/tas.jpeg" alt="produk tas modern" class="batik-image" />
+              <h3>Pakaian Modern</h3>
+              <p>Koleksi pakaian sehari-hari dengan desain batik modern yang nyaman dan stylish.</p>
+              <ul>
+                <li>Kemeja modern dengan motif kontemporer</li>
+                <li>Dress dengan siluet fashionable</li>
+                <li>Outerwear batik untuk gaya urban</li>
+              </ul>
+            </div>
+            <div class="batik-card">
+              <img src="img/aksesori.jpeg" alt="Aksesori Batik Modern" class="batik-image" />
+              <h3>Aksesori Modern</h3>
+              <p>Pelengkap gaya dengan sentuhan motif batik yang modern dan elegan.</p>
+              <ul>
+                <li>Tas dan dompet dengan desain minimalis</li>
+                <li>Sepatu dan sandal batik kontemporer</li>
+                <li>Perhiasan dengan motif batik modern</li>
+              </ul>
+            </div>
+            <div class="batik-card">
+              <img src="img/home decor.jpeg" alt="Home Decor Batik Modern" class="batik-image" />
+              <h3>Home Decor</h3>
+              <p>Elemen dekorasi rumah dengan estetika batik kontemporer yang sophisticated.</p>
+              <ul>
+                <li>Bantal dan cushion dengan motif modern</li>
+                <li>Tatakan gelas dan placemat batik</li>
+                <li>Wall art dan dekorasi dinding</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="galeri" class="section">
+        <div class="content-section">
+          <h2>Galeri Model Batik Modern</h2>
+          <p style="font-size: 1.1rem; margin-bottom: 1.5rem">Koleksi model baju batik modern untuk berbagai kategori dan acara dengan sentuhan kontemporer.</p>
+
+          <div class="category-tabs">
+            <button class="tab-btn active" onclick="showTab('pria')">Pria</button>
+            <button class="tab-btn" onclick="showTab('wanita')">Wanita</button>
+          </div>
+
+          <div id="pria" class="tab-content active">
+            <div class="batik-grid">
+              <div class="batik-card">
+                <img src="img/eco.jpeg" alt="Kemeja Batik Pria Modern" class="model-image" />
+                <h3>Kemeja Batik Modern</h3>
+                <p>Kemeja batik lengan panjang dengan motif kontemporer, cocok untuk acara formal dan meeting kantor dengan gaya yang fresh.</p>
+              </div>
+              <div class="batik-card">
+                <img src="img/l1.jpeg" alt="Batik Pria Casual Modern" class="model-image" />
+                <h3>Batik Casual Modern</h3>
+                <p>Baju batik dengan potongan modern dan motif minimalis, cocok untuk acara santai dan gaya sehari-hari yang trendy.</p>
+              </div>
+              <div class="batik-card">
+                <img src="img/jaket.jpeg" alt="Outerwear Batik Modern" class="model-image" />
+                <h3>Outerwear Batik</h3>
+                <p>Jaket dan outerwear dengan sentuhan batik modern untuk penampilan yang stylish dan sophisticated.</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="wanita" class="tab-content">
+            <div class="batik-grid">
+              <div class="batik-card">
+                <img src="img/mega wanita.jpeg" alt="Dress Batik Modern" class="model-image" />
+                <h3>Dress Batik Kontemporer</h3>
+                <p>Dress wanita elegan dengan paduan motif batik modern dan siluet yang fashionable untuk berbagai kesempatan.</p>
+              </div>
+              <div class="batik-card">
+                <img src="img/m3.jpeg" alt="Blus Batik Wanita Modern" class="model-image" />
+                <h3>Blus Batik Modern</h3>
+                <p>Blus dengan motif batik kontemporer dan potongan yang trendy, cocok untuk tampilan semi-formal yang stylish.</p>
+              </div>
+              <div class="batik-card">
+                <img src="img/m1.jpeg" alt="Set Batik Wanita" class="model-image" />
+                <h3>Set Batik Modern</h3>
+                <p>Setelan batik dengan desain modern yang lengkap, memberikan kesan elegan dan sophisticated untuk acara spesial.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tentang" class="section">
+        <div class="content-section">
+          <h2>Tentang Batik Modern</h2>
+          <p style="font-size: 1.1rem; margin-bottom: 1.5rem">Batik Modern adalah evolusi kreatif yang membawa warisan budaya Indonesia ke panggung global dengan bahasa visual yang relevan untuk generasi sekarang.</p>
+
+          <div class="highlight-box">
+            <h3 style="color: var(--primary); margin-bottom: 1rem">Visi Batik Modern</h3>
+            <p>
+              Kami percaya bahwa batik bukan sekadar warisan masa lalu, tetapi living culture yang terus berevolusi. Batik Modern hadir untuk menjembatani tradisi dengan kontemporer, melestarikan nilai-nilai budaya sambil merangkul inovasi
+              dan kreativitas tanpa batas.
+            </p>
+          </div>
+
+          <div class="batik-grid">
+            <div class="batik-card">
+              <h3>🌱 Melestarikan dengan Berinovasi</h3>
+              <p>Kami menghormati teknik dan filosofi batik tradisional sambil mengembangkan ekspresi baru yang sesuai dengan zaman dan tren global.</p>
+            </div>
+            <div class="batik-card">
+              <h3>🚀 Untuk Generasi Masa Kini</h3>
+              <p>Batik Modern dirancang untuk menjawab kebutuhan gaya hidup urban yang dinamis, praktis, dan tetap stylish.</p>
+            </div>
+            <div class="batik-card">
+              <h3>🌍 Membawa Batik ke Dunia</h3>
+              <p>Dengan pendekatan yang lebih universal dan kontemporer, batik modern memiliki potensi besar untuk diterima di pasar fashion internasional.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <h3>Vohisma Batik</h3>
+            <p>Menghadirkan keindahan batik Indonesia dengan sentuhan modern untuk gaya hidup kontemporer.</p>
+            <div class="social-links">
+              <a href="https://www.instagram.com/smkn.5.malang?igsh=MWg3Mm5pOG5ubmJncg==" class="social-link" target="_blank">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://youtube.com/@smkn5malang-vh5?si=-UT93y19x6KC6zsU" class="social-link" target="_blank">
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a href="https://maps.google.com/?q=Jl.+Ikan+Piranha+Atas,+Tunjungsekar,+Kec.+Lowokwaru,+Kota+Malang,+Jawa+Timur+65142" class="social-link" target="_blank">
+                <i class="fas fa-map-marker-alt"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h3>Informasi</h3>
+            <ul class="footer-links">
+              <li><a href="#">Tentang Kami</a></li>
+              <li><a href="#">Kebijakan Privasi</a></li>
+              <li><a href="#">Syarat & Ketentuan</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Bantuan & FAQ</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Akun Saya</h3>
+            <ul class="footer-links">
+              <li><a href="#">Akun Saya</a></li>
+              <li><a href="#">Riwayat Pesanan</a></li>
+              <li><a href="#">Wishlist</a></li>
+              <li><a href="#">Newsletter</a></li>
+              <li><a href="#">Pengembalian</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Kontak</h3>
+            <ul class="footer-contact">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Jl. Ikan Piranha Atas, Tunjungsekar, Kec. Lowokwaru, Kota Malang, Jawa Timur 65142, Indonesia</span>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>(0341) 478195</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>info@vohismabatik.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Vohisma Batik. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function showSection(sectionId) {
+        const sections = document.querySelectorAll(".section");
+        sections.forEach((section) => {
+          section.classList.remove("active");
+        });
+
+        const activeSection = document.getElementById(sectionId);
+        if (activeSection) {
+          activeSection.classList.add("active");
+        }
+
+        const navItems = document.querySelectorAll(".nav-item");
+        navItems.forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        event.target.classList.add("active");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function goToIndex3() {
+        window.location.href = "index3.html";
+      }
+
+      function showTab(tabId) {
+        document.querySelectorAll(".tab-content").forEach((tab) => {
+          tab.classList.remove("active");
+        });
+
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        document.getElementById(tabId).classList.add("active");
+        event.target.classList.add("active");
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        showSection("beranda");
+      });
+    </script>
+  </body>
+</html>

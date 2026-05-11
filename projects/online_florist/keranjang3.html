@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keranjang - Flowers</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Arial', sans-serif;
+    }
+    .navbar {
+      background-color: palevioletred;
+    }
+    .cart-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #343a40;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .cart-item {
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      background-color: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .cart-item img {
+      max-width: 100px;
+      margin-right: 15px;
+      border-radius: 10px;
+    }
+    .cart-description {
+      font-size: 1.2rem;
+      color: #343a40;
+    }
+    .cart-price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #28a745;
+    }
+    .btn-primary {
+      background-color: violet;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: violet;
+    }
+    footer {
+      background-color: palevioletred;
+      color: white;
+      padding: 10px 0;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">Fresh Coquette</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Beranda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="produk.html">Produk</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="keranjang.html">Keranjang</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="kontak.html">Kontak</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Keranjang -->
+  <div class="container my-5">
+    <h1 class="cart-title">Keranjang Belanja</h1>
+    <div class="cart-item d-flex align-items-center">
+      <img src="image/daisy2.jpg" alt="Bunga Mawar">
+      <div>
+        <h5 class="cart-description"> Bunga Daisy</h5>
+        <p class="cart-price">Rp 300.000</p>
+      </div>
+    </div>
+  
+    <div class="text-right">
+      <h3>Total: Rp 300.000</h3>
+      <a href="checkout.html" class="btn btn-primary btn-lg mt-3">Checkout</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <p>&copy; 2024 Fresh Coquette. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

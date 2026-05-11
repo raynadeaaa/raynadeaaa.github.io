@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="440" viewBox="0 0 800 440">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fdf6f9"/>
+      <stop offset="100%" style="stop-color:#f9ebf0"/>
+    </linearGradient>
+    <linearGradient id="pink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff9eb5"/>
+      <stop offset="100%" style="stop-color:#ff6b8b"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8e6cf"/>
+      <stop offset="100%" style="stop-color:#7bc8a4"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#ff9eb5" flood-opacity="0.18"/>
+    </filter>
+    <filter id="cardshadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.1)" flood-opacity="1"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="440" fill="url(#bg)"/>
+
+  <!-- Decorative leaves in corners -->
+  <ellipse cx="30" cy="30" rx="40" ry="20" fill="#a8e6cf" opacity="0.3" transform="rotate(-30,30,30)"/>
+  <ellipse cx="770" cy="410" rx="50" ry="22" fill="#a8e6cf" opacity="0.25" transform="rotate(30,770,410)"/>
+  <ellipse cx="760" cy="30" rx="35" ry="16" fill="#ff9eb5" opacity="0.2" transform="rotate(45,760,30)"/>
+
+  <!-- Top navbar -->
+  <rect width="800" height="52" fill="white" opacity="0.95" filter="url(#shadow)"/>
+  <text x="40" y="33" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="#ff6b8b">🌸 FloraShop</text>
+  <!-- Nav items -->
+  <text x="260" y="33" font-family="sans-serif" font-size="13" fill="#888">Home</text>
+  <text x="320" y="33" font-family="sans-serif" font-size="13" fill="#ff6b8b" font-weight="600">Shop</text>
+  <text x="375" y="33" font-family="sans-serif" font-size="13" fill="#888">Bouquets</text>
+  <text x="450" y="33" font-family="sans-serif" font-size="13" fill="#888">About</text>
+  <!-- Cart -->
+  <rect x="680" y="15" width="80" height="26" rx="13" fill="url(#pink)"/>
+  <text x="720" y="32" font-family="sans-serif" font-size="12" fill="white" text-anchor="middle">🛒 Cart (3)</text>
+  <!-- Search -->
+  <rect x="548" y="15" width="120" height="26" rx="13" fill="#f5f5f5" stroke="#ffe6ed" stroke-width="1"/>
+  <text x="560" y="32" font-family="sans-serif" font-size="11" fill="#bbb">🔍 Search...</text>
+
+  <!-- Hero banner -->
+  <rect x="30" y="70" width="460" height="150" rx="16" fill="url(#pink)" opacity="0.95"/>
+  <!-- Floral decoration in banner -->
+  <circle cx="400" cy="100" r="60" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="440" cy="160" r="40" fill="rgba(255,255,255,0.07)"/>
+  <text x="370" y="105" font-size="50" opacity="0.6">🌺</text>
+  <text x="420" y="150" font-size="30" opacity="0.5">🌸</text>
+  <text x="50" y="110" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="white">Fresh Flowers</text>
+  <text x="50" y="135" font-family="Georgia,serif" font-size="22" font-weight="bold" fill="white">For Every Moment</text>
+  <text x="50" y="158" font-family="sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">Free delivery for orders above Rp 150.000</text>
+  <rect x="50" y="172" width="100" height="28" rx="14" fill="white"/>
+  <text x="100" y="190" font-family="sans-serif" font-size="12" font-weight="600" fill="#ff6b8b" text-anchor="middle">Shop Now →</text>
+
+  <!-- Product cards -->
+  <!-- Card 1 -->
+  <rect x="30" y="235" width="145" height="175" rx="14" fill="white" filter="url(#cardshadow)"/>
+  <rect x="30" y="235" width="145" height="95" rx="14" fill="#fff0f4"/>
+  <text x="75" y="295" font-size="45" text-anchor="middle">🌹</text>
+  <rect x="40" y="340" width="50" height="18" rx="9" fill="#ffe6ed"/>
+  <text x="65" y="352" font-family="sans-serif" font-size="9" fill="#ff6b8b" text-anchor="middle">Red Rose</text>
+  <text x="103" y="352" font-family="sans-serif" font-size="10" fill="#ff6b8b" font-weight="bold">Rp 75rb</text>
+  <text x="40" y="375" font-family="sans-serif" font-size="10" fill="#aaa">Romantic bouquet</text>
+  <rect x="40" y="388" width="115" height="10" rx="3" fill="#ffb3c6" opacity="0.4"/>
+  <rect x="40" y="388" width="80" height="10" rx="3" fill="url(#pink)" opacity="0.7"/>
+  <text x="160" y="397" font-family="sans-serif" font-size="8" fill="#ff9eb5">4.8★</text>
+
+  <!-- Card 2 -->
+  <rect x="185" y="235" width="145" height="175" rx="14" fill="white" filter="url(#cardshadow)"/>
+  <rect x="185" y="235" width="145" height="95" rx="14" fill="#f0fff4"/>
+  <text x="230" y="295" font-size="45" text-anchor="middle">🌻</text>
+  <rect x="195" y="340" width="50" height="18" rx="9" fill="#e6f9ed"/>
+  <text x="220" y="352" font-family="sans-serif" font-size="9" fill="#27ae60" text-anchor="middle">Sunflower</text>
+  <text x="258" y="352" font-family="sans-serif" font-size="10" fill="#ff6b8b" font-weight="bold">Rp 60rb</text>
+  <text x="195" y="375" font-family="sans-serif" font-size="10" fill="#aaa">Happy bouquet</text>
+  <!-- Add to cart btn -->
+  <rect x="195" y="385" width="125" height="18" rx="9" fill="url(#pink)"/>
+  <text x="257" y="397" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">+ Add to Cart</text>
+
+  <!-- Card 3 -->
+  <rect x="340" y="235" width="145" height="175" rx="14" fill="white" filter="url(#cardshadow)"/>
+  <rect x="340" y="235" width="145" height="95" rx="14" fill="#fef0ff"/>
+  <text x="385" y="295" font-size="45" text-anchor="middle">💐</text>
+  <rect x="350" y="340" width="55" height="18" rx="9" fill="#f5e6ff"/>
+  <text x="377" y="352" font-family="sans-serif" font-size="9" fill="#8e44ad" text-anchor="middle">Mix Bouquet</text>
+  <text x="413" y="352" font-family="sans-serif" font-size="10" fill="#ff6b8b" font-weight="bold">Rp 120rb</text>
+  <text x="350" y="375" font-family="sans-serif" font-size="10" fill="#aaa">Premium choice</text>
+  <rect x="350" y="385" width="125" height="18" rx="9" fill="url(#pink)"/>
+  <text x="412" y="397" font-family="sans-serif" font-size="10" fill="white" text-anchor="middle">+ Add to Cart</text>
+
+  <!-- Right panel: cart / order summary -->
+  <rect x="505" y="70" width="265" height="340" rx="16" fill="white" filter="url(#cardshadow)"/>
+  <rect x="505" y="70" width="265" height="48" rx="16" fill="url(#green)" opacity="0.5"/>
+  <text x="637" y="100" font-family="Georgia,serif" font-size="16" font-weight="bold" fill="#2c5f3f" text-anchor="middle">🛒 Order Summary</text>
+
+  <!-- Cart items -->
+  <line x1="520" y1="130" x2="755" y2="130" stroke="#ffe6ed" stroke-width="1"/>
+  <text x="528" y="155" font-size="18">🌹</text>
+  <text x="555" y="152" font-family="sans-serif" font-size="12" fill="#333">Red Rose Bouquet</text>
+  <text x="555" y="165" font-family="sans-serif" font-size="10" fill="#aaa">Qty: 1</text>
+  <text x="730" y="155" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ff6b8b" text-anchor="end">Rp 75.000</text>
+
+  <line x1="520" y1="178" x2="755" y2="178" stroke="#fff0f4" stroke-width="1"/>
+  <text x="528" y="200" font-size="18">🌻</text>
+  <text x="555" y="197" font-family="sans-serif" font-size="12" fill="#333">Sunflower Bouquet</text>
+  <text x="555" y="210" font-family="sans-serif" font-size="10" fill="#aaa">Qty: 2</text>
+  <text x="730" y="200" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ff6b8b" text-anchor="end">Rp 120.000</text>
+
+  <line x1="520" y1="220" x2="755" y2="220" stroke="#fff0f4" stroke-width="1"/>
+  <text x="528" y="245" font-size="18">💐</text>
+  <text x="555" y="242" font-family="sans-serif" font-size="12" fill="#333">Mix Premium</text>
+  <text x="555" y="255" font-family="sans-serif" font-size="10" fill="#aaa">Qty: 1</text>
+  <text x="730" y="245" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ff6b8b" text-anchor="end">Rp 120.000</text>
+
+  <line x1="520" y1="265" x2="755" y2="265" stroke="#ffe6ed" stroke-width="1.5"/>
+
+  <!-- Delivery -->
+  <text x="528" y="285" font-family="sans-serif" font-size="11" fill="#888">Delivery</text>
+  <text x="730" y="285" font-family="sans-serif" font-size="11" fill="#27ae60" text-anchor="end">FREE</text>
+
+  <!-- Total -->
+  <text x="528" y="308" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333">Total</text>
+  <text x="730" y="308" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ff6b8b" text-anchor="end">Rp 315.000</text>
+
+  <!-- Promo code -->
+  <rect x="520" y="318" width="160" height="28" rx="8" fill="#fff5f7" stroke="#ffe6ed" stroke-width="1"/>
+  <text x="534" y="336" font-family="sans-serif" font-size="11" fill="#bbb">Enter promo code</text>
+  <rect x="688" y="318" width="57" height="28" rx="8" fill="url(#pink)"/>
+  <text x="716" y="336" font-family="sans-serif" font-size="11" fill="white" text-anchor="middle">Apply</text>
+
+  <!-- Checkout button -->
+  <rect x="520" y="356" width="225" height="38" rx="19" fill="url(#pink)" filter="url(#shadow)"/>
+  <text x="632" y="380" font-family="sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Checkout Now 🌸</text>
+</svg>

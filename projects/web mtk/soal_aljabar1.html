@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contoh Soal Bentuk Aljabar - Letstlearn</title>
+    <style>
+      /* CSS tetap sama seperti sebelumnya */
+      :root {
+        --primary: #3e798b;
+        --primary-light: #575757;
+        --primary-dark: #575757;
+        --secondary: #2196f3;
+        --text: #333;
+        --text-light: #666;
+        --bg: #ffffff;
+        --bg-light: #f8f9fa;
+        --border: #e0e0e0;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --radius: 8px;
+        --success: #4caf50;
+        --error: #f44336;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", system-ui, sans-serif;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background: var(--bg);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid var(--border);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+      }
+
+      .nav-center {
+        display: flex;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      /* Dropdown Styles */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--bg);
+        min-width: 180px;
+        box-shadow: var(--shadow);
+        border-radius: var(--radius);
+        z-index: 1000;
+        margin-top: 0.5rem;
+        overflow: hidden;
+        animation: dropdownFade 0.3s ease-out;
+      }
+
+      @keyframes dropdownFade {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown-content a {
+        display: block;
+        padding: 0.75rem 1rem;
+        text-decoration: none;
+        color: var(--text);
+        border-bottom: 1px solid var(--border);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        font-size: 0.9rem;
+      }
+
+      .dropdown-content a:hover {
+        background: var(--bg-light);
+        color: var(--primary);
+        padding-left: 1.25rem;
+        transform: translateX(5px);
+      }
+
+      .dropdown-content a:last-child {
+        border-bottom: none;
+      }
+
+      .nav-item {
+        margin: 0 1rem;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-weight: 500;
+        position: relative;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        color: var(--text);
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .nav-item:hover {
+        color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      .nav-item::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary);
+        transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .nav-item:hover::after {
+        width: 100%;
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .btn-home {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        box-shadow: 0 2px 8px rgba(123, 31, 162, 0.2);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-home::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s;
+      }
+
+      .btn-home:hover::before {
+        left: 100%;
+      }
+
+      .btn-home:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 4px 15px rgba(123, 31, 162, 0.3);
+      }
+
+      .btn-home:active {
+        transform: translateY(-1px) scale(1.02);
+      }
+
+      /* Hero Section untuk halaman soal */
+      .hero {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 3rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 40vh;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 20% 80%, rgba(123, 31, 162, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(33, 150, 243, 0.1) 0%, transparent 50%);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .hero-content {
+        max-width: 800px;
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary-dark);
+        font-weight: 700;
+        animation: titleEntrance 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        text-align: center;
+        width: 100%;
+      }
+
+      @keyframes titleEntrance {
+        0% {
+          opacity: 0;
+          transform: translateY(30px) scale(0.9);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        color: var(--text-light);
+        margin-bottom: 2rem;
+        max-width: 600px;
+        animation: textEntrance 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+        text-align: center;
+        width: 100%;
+      }
+
+      @keyframes textEntrance {
+        0% {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Container Soal */
+      .soal-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .soal-card {
+        background: var(--bg-light);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .soal-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .soal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+      }
+
+      .soal-number {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary);
+        background: rgba(62, 121, 139, 0.1);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+      }
+
+      .soal-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        color: var(--text);
+      }
+
+      .soal-text p {
+        margin: 0 0 1rem 0;
+      }
+
+      /* Styling untuk langkah-langkah */
+      .langkah-container {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 2px dashed var(--border);
+        display: none;
+      }
+
+      .langkah-container h3 {
+        color: var(--primary-dark);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      /* Animasi untuk langkah-langkah */
+      .langkah-item {
+        background: var(--bg);
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-left: 5px solid var(--primary);
+        border-radius: 0 var(--radius) var(--radius) 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: slideIn 0.5s ease forwards;
+      }
+
+      .langkah-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .langkah-item:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+      .langkah-item:nth-child(3) {
+        animation-delay: 0.5s;
+      }
+      .langkah-item:nth-child(4) {
+        animation-delay: 0.7s;
+      }
+      .langkah-item:nth-child(5) {
+        animation-delay: 0.9s;
+      }
+
+      @keyframes slideIn {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .langkah-item h4 {
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .langkah-item p {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      /* Container untuk kode matematika */
+      .code-container {
+        background: #f8f9fa;
+        border-radius: var(--radius);
+        padding: 1rem;
+        margin: 1rem 0;
+        border-left: 4px solid var(--secondary);
+        overflow-x: auto;
+      }
+
+      .code-container code {
+        display: block;
+        font-family: "Courier New", monospace;
+        font-size: 1rem;
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      /* Highlight untuk langkah penting */
+      .langkah-highlight {
+        background: rgba(62, 121, 139, 0.1);
+        padding: 0.5rem;
+        border-radius: var(--radius);
+        margin: 0.5rem 0;
+        border: 1px solid rgba(62, 121, 139, 0.2);
+      }
+
+      .langkah-note {
+        background: rgba(33, 150, 243, 0.1);
+        padding: 0.75rem;
+        border-radius: var(--radius);
+        margin: 1rem 0;
+        border-left: 4px solid var(--secondary);
+        font-style: italic;
+      }
+
+      /* Tombol untuk show/hide langkah */
+      .btn-langkah {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+        background: var(--secondary);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-langkah:hover {
+        background: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      .math-equation {
+        display: block;
+        margin: 10px 0;
+        padding: 10px;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--secondary);
+        border-radius: var(--radius);
+        overflow-x: auto;
+        font-size: 1.1rem;
+      }
+
+      .soal-text img {
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--radius);
+        margin: 1rem 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .pilihan-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .pilihan-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        background: var(--bg);
+        border: 2px solid var(--border);
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pilihan-item:hover {
+        border-color: var(--primary-light);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .pilihan-item.selected {
+        border-color: var(--primary);
+        background: rgba(62, 121, 139, 0.05);
+      }
+
+      .pilihan-item.correct {
+        border-color: var(--success);
+        background: rgba(76, 175, 80, 0.1);
+      }
+
+      .pilihan-item.incorrect {
+        border-color: var(--error);
+        background: rgba(244, 67, 54, 0.1);
+      }
+
+      .pilihan-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        background: var(--border);
+        color: var(--text);
+        border-radius: 50%;
+        margin-right: 1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .pilihan-item.selected .pilihan-label {
+        background: var(--primary);
+        color: white;
+      }
+
+      .pilihan-item.correct .pilihan-label {
+        background: var(--success);
+        color: white;
+      }
+
+      .pilihan-item.incorrect .pilihan-label {
+        background: var(--error);
+        color: white;
+      }
+
+      .pilihan-text {
+        flex: 1;
+      }
+
+      .feedback {
+        padding: 1rem;
+        border-radius: var(--radius);
+        margin-top: 1rem;
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .feedback.correct {
+        background: rgba(76, 175, 80, 0.1);
+        border-left: 4px solid var(--success);
+        color: var(--success);
+        display: block;
+      }
+
+      .feedback.incorrect {
+        background: rgba(244, 67, 54, 0.1);
+        border-left: 4px solid var(--error);
+        color: var(--error);
+        display: block;
+      }
+
+      .feedback p {
+        margin: 0;
+        font-weight: 500;
+      }
+
+      .soal-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1.5rem;
+      }
+
+      .btn-primary {
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        box-shadow: 0 4px 15px rgba(123, 31, 162, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s;
+      }
+
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(123, 31, 162, 0.4);
+      }
+
+      .btn-primary:active {
+        transform: translateY(-1px) scale(1.02);
+      }
+
+      .btn-secondary {
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+        background: transparent;
+        color: var(--primary);
+        border: 2px solid var(--primary);
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-secondary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background: var(--primary);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        z-index: -1;
+      }
+
+      .btn-secondary:hover::before {
+        width: 100%;
+      }
+
+      .btn-secondary:hover {
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(123, 31, 162, 0.3);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Footer yang Diperbarui */
+      .footer {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        color: white;
+        padding: 50px 0 20px;
+        margin-top: auto;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(33, 150, 243, 0.1) 0%, transparent 50%);
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .footer-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-section h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--secondary);
+      }
+
+      .footer-section p {
+        line-height: 1.6;
+        margin-bottom: 15px;
+        opacity: 0.9;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .footer-links a:hover {
+        color: var(--secondary);
+        transform: translateX(5px);
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .contact-item i {
+        color: var(--secondary);
+        margin-top: 3px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: var(--secondary);
+        transform: translateY(-5px);
+      }
+
+      .footer-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 40px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .footer-bottom p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+      }
+
+      /* Responsif */
+      @media (max-width: 900px) {
+        .soal-container {
+          padding: 1rem;
+        }
+
+        .soal-card {
+          padding: 1.5rem;
+        }
+
+        .soal-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+        }
+
+        .soal-actions {
+          flex-direction: column;
+          gap: 1rem;
+          align-items: stretch;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+        }
+
+        header {
+          flex-direction: column;
+          gap: 1rem;
+          padding: 1rem;
+        }
+
+        .nav-center {
+          position: static;
+          transform: none;
+          order: 2;
+        }
+
+        .logo {
+          order: 1;
+        }
+
+        .nav-right {
+          order: 3;
+          margin-top: 1rem;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .dropdown-content {
+          position: fixed;
+          left: 50%;
+          transform: translateX(-50%);
+          min-width: 200px;
+        }
+
+        /* Responsif untuk footer */
+        .footer-container {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .footer-section h3::after {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .contact-item {
+          justify-content: center;
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .nav-item {
+          margin: 0 0.5rem;
+          font-size: 0.9rem;
+        }
+
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+
+        .soal-text {
+          font-size: 1rem;
+        }
+
+        .pilihan-item {
+          padding: 0.75rem;
+        }
+
+        .btn-home {
+          padding: 0.4rem 1rem;
+          font-size: 0.8rem;
+        }
+
+        .btn-langkah {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">Letstlearn</div>
+      <div class="nav-right">
+        <a href="index.html" class="btn-home">
+          <i class="fas fa-home"></i>
+          Beranda
+        </a>
+      </div>
+    </header>
+
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Bentuk Aljabar: Mengidentifikasi Komponen</h1>
+        <p>Uji pemahaman Anda tentang konsep Bentuk Aljabar, Variabel, Koefisien, Konstanta, dan Jenis Suku.</p>
+      </div>
+    </div>
+
+    <div class="soal-container">
+      <div id="soal-1" class="soal-card">
+        <div class="soal-header">
+          <div class="soal-number">Soal 1</div>
+        </div>
+        <div class="soal-text">
+          <p>Perhatikan bentuk aljabar berikut:</p>
+          <div class="math-equation">
+            <strong>3x² - 5xy + 2y - 7</strong>
+          </div>
+          <p>Tentukan komponen-komponen berikut dari bentuk aljabar di atas:</p>
+          <ol>
+            <li>Variabel-variabel yang digunakan</li>
+            <li>Koefisien dari masing-masing suku</li>
+            <li>Konstanta</li>
+            <li>Jenis suku berdasarkan jumlah sukunya</li>
+          </ol>
+          <p>Manakah pernyataan yang benar tentang bentuk aljabar tersebut?</p>
+        </div>
+
+        <div class="pilihan-container">
+          <div class="pilihan-item" data-value="A">
+            <span class="pilihan-label">A</span>
+            <span class="pilihan-text">Variabel: x dan y, Koefisien: 3, -5, 2, Konstanta: -7, Jenis: Trinomial</span>
+          </div>
+          <div class="pilihan-item" data-value="B">
+            <span class="pilihan-label">B</span>
+            <span class="pilihan-text">Variabel: x dan y, Koefisien: 3, -5, 2, -7, Konstanta: tidak ada, Jenis: Polinomial</span>
+          </div>
+          <div class="pilihan-item" data-value="C">
+            <span class="pilihan-label">C</span>
+            <span class="pilihan-text">Variabel: x saja, Koefisien: 3, -5, 2, Konstanta: -7, Jenis: Binomial</span>
+          </div>
+          <div class="pilihan-item" data-value="D">
+            <span class="pilihan-label">D</span>
+            <span class="pilihan-text">Variabel: x dan y, Koefisien: 3, 5, 2, Konstanta: 7, Jenis: Quadrinomial</span>
+          </div>
+        </div>
+
+        <div class="feedback">
+          <p></p>
+        </div>
+
+        <div class="soal-actions">
+          <button class="btn-primary" onclick="checkAnswer(1)">Cek Jawaban</button>
+          <button class="btn-secondary" onclick="resetSoal(1)">Reset</button>
+        </div>
+
+        <!-- LANGKAH-LANGKAH -->
+        <div class="langkah-container">
+          <h3><i class="fas fa-list-ol"></i> Langkah-Langkah Penyelesaian</h3>
+
+          <div class="langkah-item">
+            <h4><i class="fas fa-calculator"></i> Langkah 1: Identifikasi Bentuk Aljabar</h4>
+            <p>Bentuk aljabar yang diberikan:</p>
+            <div class="code-container">
+              <code>3x² - 5xy + 2y - 7</code>
+            </div>
+            <p>Bentuk ini terdiri dari 4 suku yang dipisahkan oleh tanda + atau -</p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem">
+              <li>Suku 1: 3x²</li>
+              <li>Suku 2: -5xy</li>
+              <li>Suku 3: 2y</li>
+              <li>Suku 4: -7</li>
+            </ul>
+          </div>
+
+          <div class="langkah-item">
+            <h4><i class="fas fa-font"></i> Langkah 2: Identifikasi Variabel</h4>
+            <div class="langkah-highlight">
+              <p><strong>Variabel</strong> adalah simbol/huruf yang mewakili bilangan yang belum diketahui nilainya.</p>
+            </div>
+            <p>Dari bentuk aljabar 3x² - 5xy + 2y - 7:</p>
+            <div class="code-container">
+              <code>• Suku 3x²: variabel = x</code>
+              <code>• Suku -5xy: variabel = x dan y</code>
+              <code>• Suku 2y: variabel = y</code>
+              <code>• Suku -7: tidak ada variabel (konstanta)</code>
+            </div>
+            <p><strong>Kesimpulan:</strong> Variabel yang digunakan adalah <strong>x dan y</strong></p>
+          </div>
+
+          <div class="langkah-item">
+            <h4><i class="fas fa-hashtag"></i> Langkah 3: Identifikasi Koefisien</h4>
+            <div class="langkah-highlight">
+              <p><strong>Koefisien</strong> adalah angka/bilangan yang mengalikan variabel.</p>
+            </div>
+            <p>Dari bentuk aljabar 3x² - 5xy + 2y - 7:</p>
+            <div class="code-container">
+              <code>• Suku 3x²: koefisien = 3</code>
+              <code>• Suku -5xy: koefisien = -5</code>
+              <code>• Suku 2y: koefisien = 2</code>
+              <code>• Suku -7: bukan koefisien (ini adalah konstanta)</code>
+            </div>
+            <p><strong>Kesimpulan:</strong> Koefisiennya adalah <strong>3, -5, dan 2</strong></p>
+            <div class="langkah-note"><i class="fas fa-lightbulb"></i> <strong>Tips:</strong> Perhatikan tanda negatif! Koefisien dari -5xy adalah -5, bukan 5.</div>
+          </div>
+
+          <div class="langkah-item">
+            <h4><i class="fas fa-equals"></i> Langkah 4: Identifikasi Konstanta</h4>
+            <div class="langkah-highlight">
+              <p><strong>Konstanta</strong> adalah suku yang tidak memiliki variabel (bilangan tetap).</p>
+            </div>
+            <p>Dari bentuk aljabar 3x² - 5xy + 2y - 7:</p>
+            <div class="code-container">
+              <code>• Suku 3x²: bukan konstanta (memiliki variabel x)</code>
+              <code>• Suku -5xy: bukan konstanta (memiliki variabel x dan y)</code>
+              <code>• Suku 2y: bukan konstanta (memiliki variabel y)</code>
+              <code>• Suku -7: KONSTANTA (tidak memiliki variabel)</code>
+            </div>
+            <p><strong>Kesimpulan:</strong> Konstanta = <strong>-7</strong></p>
+          </div>
+
+          <div class="langkah-item">
+            <h4><i class="fas fa-layer-group"></i> Langkah 5: Tentukan Jenis Suku</h4>
+            <div class="langkah-highlight">
+              <p><strong>Jenis suku berdasarkan jumlah sukunya:</strong></p>
+              <ul style="margin-left: 1.5rem">
+                <li>Monomial: 1 suku (contoh: 3x)</li>
+                <li>Binomial: 2 suku (contoh: 2x + 3)</li>
+                <li>Trinomial: 3 suku (contoh: x² + 2x + 1)</li>
+                <li>Polinomial: 4 suku atau lebih</li>
+              </ul>
+            </div>
+            <p>Bentuk aljabar kita: <strong>3x² - 5xy + 2y - 7</strong></p>
+            <p>Jumlah suku: <strong>4 suku</strong></p>
+            <p><strong>Kesimpulan:</strong> Karena memiliki 4 suku, maka ini adalah <strong>Polinomial</strong></p>
+            <div class="langkah-note"><i class="fas fa-lightbulb"></i> <strong>Tips:</strong> Trinomial hanya untuk 3 suku. Untuk 4 suku atau lebih disebut Polinomial.</div>
+          </div>
+
+          <div class="langkah-item">
+            <h4><i class="fas fa-check-circle"></i> Langkah 6: Analisis Pilihan Jawaban</h4>
+            <div class="langkah-highlight">
+              <p><strong>Hasil identifikasi kita:</strong></p>
+              <div class="code-container">
+                <code>• Variabel: x dan y ✓</code>
+                <code>• Koefisien: 3, -5, 2 ✓</code>
+                <code>• Konstanta: -7 ✓</code>
+                <code>• Jenis: Polinomial (karena 4 suku) ✓</code>
+              </div>
+            </div>
+            <p><strong>Analisis pilihan:</strong></p>
+            <ul style="margin-left: 1.5rem">
+              <li><strong>A:</strong> Salah karena menyebutnya Trinomial (harusnya Polinomial)</li>
+              <li><strong>B:</strong> BENAR semua komponen tepat</li>
+              <li><strong>C:</strong> Salah karena hanya menyebut variabel x, dan menyebutnya Binomial</li>
+              <li><strong>D:</strong> Salah karena koefisien -5 dianggap 5, konstanta -7 dianggap 7</li>
+            </ul>
+            <p><strong>Jawaban akhir:</strong> Pilihan <strong>B</strong> adalah yang benar</p>
+          </div>
+
+          <button class="btn-langkah" onclick="toggleLangkah()"><i class="fas fa-eye"></i> Sembunyikan Langkah-Langkah</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div id="footer" class="footer-container">
+        <div class="footer-section">
+          <h3>Tentang LetsLearn</h3>
+          <p>Kami adalah platform pembelajaran matematika yang berdedikasi untuk membantu semua orang belajar matematika dengan cara yang menyenangkan dan interaktif.</p>
+          <div class="social-links">
+            <a href="https://wa.me/+6282142900539"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/isamhasib/?next=%2F"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Materi Pembelajaran</h3>
+          <ul class="footer-links">
+            <li><a href="soal_aljabar1.html">Bentuk Aljabar</a></li>
+            <li><a href="soal_aljabar2.html">Operasi Aljabar</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Kontak Kami</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <p>Jl. Ikan Piranha Atas, Tunjungsekar, Kec. Lowokwaru, Kota Malang, Jawa Timur 65142 SMKN 5 MALANG, Indonesia</p>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <p>+62 812-3456-7890</p>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <p>isamhasibaidan@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 LetsLearn. Semua Hak Dilindungi. | Platform Pembelajaran Matematika Interaktif</p>
+      </div>
+    </footer>
+
+    <script>
+      // Daftar jawaban benar
+      const correctAnswers = {
+        1: "B",
+      };
+
+      // Fungsi untuk toggle show/hide langkah-langkah
+      function toggleLangkah() {
+        const langkahContainer = document.querySelector(".langkah-container");
+        const btnLangkah = document.querySelector(".btn-langkah");
+        const icon = btnLangkah.querySelector("i");
+
+        if (langkahContainer.style.display === "none") {
+          langkahContainer.style.display = "block";
+          icon.className = "fas fa-eye-slash";
+          btnLangkah.innerHTML = '<i class="fas fa-eye-slash"></i> Sembunyikan Langkah-Langkah';
+
+          // Animate langkah items when showing
+          animateLangkahItems();
+        } else {
+          langkahContainer.style.display = "none";
+          icon.className = "fas fa-eye";
+          btnLangkah.innerHTML = '<i class="fas fa-eye"></i> Sembunyikan Langkah-Langkah';
+        }
+      }
+
+      // Fungsi untuk animasi langkah items
+      function animateLangkahItems() {
+        const langkahItems = document.querySelectorAll(".langkah-item");
+
+        langkahItems.forEach((item, index) => {
+          // Reset animation
+          item.style.animation = "none";
+          item.offsetHeight; // Trigger reflow
+          item.style.animation = null;
+
+          // Apply animation with delay
+          setTimeout(() => {
+            item.style.animation = `slideIn 0.5s ease forwards ${index * 0.2}s`;
+          }, 100);
+        });
+      }
+
+      // Fungsi untuk memperlihatkan langkah-langkah secara bertahap
+      function showLangkahBertahap() {
+        const langkahContainer = document.querySelector(".langkah-container");
+        const langkahItems = document.querySelectorAll(".langkah-item");
+
+        // Show container
+        langkahContainer.style.display = "block";
+
+        // Hide all items first
+        langkahItems.forEach((item) => {
+          item.style.opacity = "0";
+          item.style.transform = "translateX(-20px)";
+        });
+
+        // Show items one by one
+        langkahItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.style.transition = "all 0.5s ease";
+            item.style.opacity = "1";
+            item.style.transform = "translateX(0)";
+          }, index * 300);
+        });
+      }
+
+      // Fungsi untuk memeriksa jawaban
+      function checkAnswer(soalId) {
+        const soalCard = document.getElementById(`soal-${soalId}`);
+        const selectedOption = soalCard.querySelector(".pilihan-item.selected");
+        const feedback = soalCard.querySelector(".feedback");
+        const correctAnswer = correctAnswers[soalId];
+        const langkahContainer = soalCard.querySelector(".langkah-container");
+
+        if (!selectedOption) {
+          alert("Silakan pilih jawaban terlebih dahulu!");
+          return;
+        }
+
+        const userAnswer = selectedOption.getAttribute("data-value");
+
+        // Reset semua kelas hasil
+        soalCard.querySelectorAll(".pilihan-item").forEach((pilihan) => {
+          pilihan.classList.remove("correct", "incorrect");
+        });
+
+        // Tampilkan feedback
+        feedback.style.display = "block";
+
+        if (userAnswer === correctAnswer) {
+          selectedOption.classList.add("correct");
+          feedback.classList.add("correct");
+          feedback.classList.remove("incorrect");
+          feedback.querySelector("p").textContent = "✅ Jawaban Anda benar! Silakan lihat langkah-langkah di bawah untuk detailnya.";
+
+          // Tampilkan langkah dengan animasi bertahap
+          langkahContainer.style.display = "block";
+          showLangkahBertahap();
+        } else {
+          selectedOption.classList.add("incorrect");
+          feedback.classList.add("incorrect");
+          feedback.classList.remove("correct");
+          feedback.querySelector("p").textContent = `❌ Jawaban Anda salah. Jawaban yang benar adalah ${correctAnswer}. Silakan pelajari langkah-langkah di bawah.`;
+
+          // Tampilkan langkah dengan animasi bertahap
+          langkahContainer.style.display = "block";
+          showLangkahBertahap();
+
+          // Tandai jawaban yang benar
+          soalCard.querySelector(`.pilihan-item[data-value="${correctAnswer}"]`).classList.add("correct");
+        }
+      }
+
+      // Fungsi untuk mereset soal
+      function resetSoal(soalId) {
+        const soalCard = document.getElementById(`soal-${soalId}`);
+
+        // Reset pilihan
+        soalCard.querySelectorAll(".pilihan-item").forEach((pilihan) => {
+          pilihan.classList.remove("selected", "correct", "incorrect");
+        });
+
+        // Sembunyikan feedback
+        const feedback = soalCard.querySelector(".feedback");
+        feedback.classList.remove("correct", "incorrect");
+        feedback.style.display = "none";
+
+        // Sembunyikan langkah-langkah dan reset animasi
+        const langkahContainer = soalCard.querySelector(".langkah-container");
+        const langkahItems = soalCard.querySelectorAll(".langkah-item");
+        langkahContainer.style.display = "none";
+
+        // Reset animasi langkah items
+        langkahItems.forEach((item) => {
+          item.style.animation = "none";
+          item.style.opacity = "0";
+          item.style.transform = "translateX(-20px)";
+        });
+
+        // Reset tombol langkah jika ada
+        const btnLangkah = soalCard.querySelector(".btn-langkah");
+        if (btnLangkah) {
+          btnLangkah.innerHTML = '<i class="fas fa-eye"></i> Sembunyikan Langkah-Langkah';
+        }
+      }
+
+      // Inisialisasi saat halaman dimuat
+      document.addEventListener("DOMContentLoaded", function () {
+        // Tambahkan event listener untuk pilihan jawaban
+        document.querySelectorAll(".pilihan-item").forEach((item) => {
+          item.addEventListener("click", function () {
+            const soalCard = this.closest(".soal-card");
+
+            // Reset semua kelas yang menunjukkan hasil atau pilihan di soal ini
+            soalCard.querySelectorAll(".pilihan-item").forEach((pilihan) => {
+              pilihan.classList.remove("selected", "correct", "incorrect");
+            });
+
+            // Tandai pilihan yang dipilih
+            this.classList.add("selected");
+
+            // Sembunyikan feedback, langkah (saat memilih opsi baru)
+            soalCard.querySelector(".feedback").style.display = "none";
+
+            // Sembunyikan langkah dengan animasi
+            const langkahContainer = soalCard.querySelector(".langkah-container");
+            const langkahItems = soalCard.querySelectorAll(".langkah-item");
+
+            if (langkahContainer.style.display === "block") {
+              // Animate hiding
+              langkahItems.forEach((item, index) => {
+                setTimeout(() => {
+                  item.style.transition = "all 0.3s ease";
+                  item.style.opacity = "0";
+                  item.style.transform = "translateX(-20px)";
+                }, index * 100);
+              });
+
+              setTimeout(() => {
+                langkahContainer.style.display = "none";
+              }, langkahItems.length * 100 + 300);
+            } else {
+              langkahContainer.style.display = "none";
+            }
+          });
+        });
+
+        // Animasi untuk soal cards
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        }, observerOptions);
+
+        // Observasi soal cards
+        document.querySelectorAll(".soal-card").forEach((card) => {
+          sectionObserver.observe(card);
+        });
+
+        // Inisialisasi reset untuk soal pertama
+        resetSoal(1);
+      });
+    </script>
+  </body>
+</html>
